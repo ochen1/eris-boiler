@@ -5,7 +5,7 @@ module.exports = new SettingCommand({
   description: 'Set Whether or not to keep old level awards for the server, ignore if you are not using levelling,defaults to `Yes`',
   options: {
     parameters: [ 'Keep Old Levels? yes/no' ],
-    permission
+    // permission
   },
   displayName: 'Keep Old Role Levels',
   getValue: async (bot, { channel }) => {
