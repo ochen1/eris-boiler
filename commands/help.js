@@ -32,8 +32,6 @@ async function filterCommands (bot, context) {
   const commands = []
   let longName = 0
   for (const command of bot.commands.values()) {
-    // const { ok } = await bot.ora.hasPermission(bot, { ...context, command })
-    // if (ok) {
       const {
         name,
         aliases,
@@ -45,7 +43,7 @@ async function filterCommands (bot, context) {
       )
       commands.push({ name, description, aliases })
     }
-  // }
+
   return { commands, longName }
 }
 

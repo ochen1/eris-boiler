@@ -1,12 +1,12 @@
 const { SettingCommand } = require('../../lib')
-const { owner: permission } = require('../../permissions')
+
 
 module.exports = new SettingCommand({
   name: 'mod',
   description: 'set the Moderator Permissions Role for the server',
   options: {
     parameters: [ 'Moderator Permissions Role name/id/mention' ],
-    permission
+    // permission
   },
   displayName: 'Moderator Permissions Role',
   getValue: async (bot, { channel }) => {

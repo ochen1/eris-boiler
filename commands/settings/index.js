@@ -1,4 +1,4 @@
-const { owner } = require('eris-boiler/permissions')
+
 const { GuildCommand } = require('../../lib')
 
 const prefix = require('./prefix')
