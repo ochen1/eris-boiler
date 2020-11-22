@@ -2,16 +2,16 @@ const { SettingCommand } = require('../../lib')
 const { owner: permission } = require('../../permissions')
 
 module.exports = new SettingCommand({
-  name: 'admin',
-  description: 'Set the Admin Permissions Role for the server',
+  name: 'dj',
+  description: 'Set the DJ Permissions Role for the server',
   options: {
-    parameters: [ 'Admin Permissions Role name/id/mention' ],
+    parameters: [ 'DJ Permissions Role name/id/mention' ],
     permission
   },
-  displayName: 'Admin Permissions Role',
+  displayName: 'DJ Permissions Role',
   getValue: async (bot, { channel }) => {
     const dbGuild = await bot.SQLHandler.getGuild(channel.guild.id);
-    const roleId = dbGuild.adminRole
+    const roleId = dbGuild.djRole
 
     if (!roleId) {
       return 'None'
@@ -31,11 +31,11 @@ module.exports = new SettingCommand({
     }
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
-    if (role.id === dbGuild.adminRole) {
-      return 'Admin Permissions is already set to that role!'
+    if (role.id === dbGuild.djRole) {
+      return 'DJ Permissions is already set to that role!'
     }
 
-    await bot.SQLHandler.updateGuild(msg.guildID,{ adminRole: role.id });
-    return 'Admin Permissions set!'
+    await bot.SQLHandler.updateGuild(msg.guildID,{ djRole: role.id });
+    return 'DJ Permissions set!'
   }
 })
