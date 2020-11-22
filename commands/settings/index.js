@@ -1,8 +1,9 @@
+const { owner } = require('eris-boiler/permissions')
 const { GuildCommand } = require('../../lib')
 const { vip: permission } = require('../../permissions')
 
 const prefix = require('./prefix')
-const vip = require('./vip')
+const mod = require('./vip')
 
 module.exports = new GuildCommand({
   name: 'settings',
@@ -11,7 +12,9 @@ module.exports = new GuildCommand({
     permission,
     subCommands: [
       prefix,
-      vip
+      mod,
+      dj,
+      owner,
     ]
   },
   run: async function (bot, context) {
@@ -21,10 +24,6 @@ module.exports = new GuildCommand({
         thumbnail: { url: bot.user.avatarURL },
         timestamp: require('dateformat')(Date.now(), 'isoDateTime'),
         color: 0x3498db,
-        // footer: {
-        //   icon_url: bot.user.avatarURL,
-        //   text: 'eris-boiler'
-        // },
         fields: await Promise.all(this.subCommands.map(async (sub) => ({
           name: sub.displayName,
           value: await sub.getValue(bot, context),
