@@ -3,7 +3,7 @@ const { GuildCommand } = require('../../lib')
 const { vip: permission } = require('../../permissions')
 
 const prefix = require('./prefix')
-const mod = require('./vip')
+const mod = require('./mod')
 
 module.exports = new GuildCommand({
   name: 'settings',
