@@ -8,8 +8,8 @@ module.exports = new SettingCommand({
   },
   displayName: 'Prefix',
   getValue: async (bot, { channel }) => {
-    const dbGuild = await bot.dbm.newQuery('guild').get(channel.guild.id)
-    return (dbGuild.get('prefix') || bot.ora.defaultPrefix) + "do `"+(dbGuild.get('prefix') || bot.ora.defaultPrefix)+" settings prefix new_prefix` to change the prefix!"
+    const prefix = await bot.SQLHandler.getGuild(msg.guildID);
+    return "`"+(perfix.prefix || bot.ora.defaultPrefix) + "` do \n`"+(dbGuild.get('prefix') || bot.ora.defaultPrefix)+" settings prefix new_prefix` to change the prefix!"
   },
   run: async (bot, { msg, params }) => {
     const fullParam = params.join(' ')
@@ -17,8 +17,8 @@ module.exports = new SettingCommand({
       return 'Please provide a prefix!'
     }
 
-    const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
-    if (fullParam === dbGuild.prefix) {
+    const guildData = await bot.SQLHandler.getGuild(msg.guildID);
+    if (fullParam === guildData.prefix) {
       return `Prefix is already set to "${fullParam}"`
     }
 
