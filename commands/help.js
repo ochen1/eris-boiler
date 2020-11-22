@@ -20,7 +20,7 @@ module.exports = new Command({
       ) + ':' + ' '.repeat(longName - name.length) + description,
       'Available commands:```'
     ) + '\n```\nTo get more information try: `help command`'
-
+    const content = "Check https://dazai.app for the current list of commands! "
     return {
       dm: true,
       content
@@ -32,8 +32,8 @@ async function filterCommands (bot, context) {
   const commands = []
   let longName = 0
   for (const command of bot.commands.values()) {
-    const { ok } = await bot.ora.hasPermission(bot, { ...context, command })
-    if (ok) {
+    // const { ok } = await bot.ora.hasPermission(bot, { ...context, command })
+    // if (ok) {
       const {
         name,
         aliases,
@@ -41,11 +41,11 @@ async function filterCommands (bot, context) {
       } = command
 
       longName = Math.max(
-        name.length + aliases.join('/').length + 3, longName
+        name.length + aliases.join(' | ').length + 3, longName
       )
       commands.push({ name, description, aliases })
     }
-  }
+  // }
   return { commands, longName }
 }
 

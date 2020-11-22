@@ -1,11 +1,11 @@
 const { Command } = require('../lib')
-const { admin: permission } = require('../permissions')
+// const { admin: permission } = require('../permissions')
 
 module.exports = new Command({
-  name: 'process',
-  description: 'Check process stats',
+  name: 'botstats',
+  description: 'Check Bot stats',
   options: {
-    permission
+    aliases:["bs","bstats"],
   },
   run: async (bot) => {
     const seconds = process.uptime()
@@ -17,18 +17,14 @@ module.exports = new Command({
 
     const inline = true
     const embed = {
-      description: ':heartbeat: [**Bot Stats**](https://github.com/alex-taxiera/eris-boiler)',
+      description: ':heartbeat: [**Bot Stats**](https://dazai.app)',
       thumbnail: { url: bot.user.avatarURL },
       timestamp: require('dateformat')(Date.now(), 'isoDateTime'),
       color: 0x3498db,
-      footer: {
-        icon_url: bot.user.avatarURL,
-        text: 'eris-boiler'
-      },
       fields: [
-        { name: 'uptime', value: uptime, inline },
-        { name: 'mem', value: `${memory}MB`, inline },
-        { name: 'guilds', value: bot.guilds.size, inline }
+        { name: 'Uptime', value: uptime, inline },
+        { name: 'Memory Used', value: `${memory}MB`, inline },
+        { name: 'Guilds', value: bot.guilds.size, inline }
       ]
     }
     return { embed }

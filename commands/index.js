@@ -3,6 +3,6 @@ module.exports = {
   settings: require('./settings'),
   status: require('./status'),
   help: require('./help'),
-  info: require('./info'),
+
   process: require('./process')
 }

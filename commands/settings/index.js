@@ -17,14 +17,14 @@ module.exports = new GuildCommand({
   run: async function (bot, context) {
     return {
       embed: {
-        description: ':gear: [**Settings**](https://github.com/alex-taxiera/eris-boiler)',
+        description: ':gear: Settings',
         thumbnail: { url: bot.user.avatarURL },
         timestamp: require('dateformat')(Date.now(), 'isoDateTime'),
         color: 0x3498db,
-        footer: {
-          icon_url: bot.user.avatarURL,
-          text: 'eris-boiler'
-        },
+        // footer: {
+        //   icon_url: bot.user.avatarURL,
+        //   text: 'eris-boiler'
+        // },
         fields: await Promise.all(this.subCommands.map(async (sub) => ({
           name: sub.displayName,
           value: await sub.getValue(bot, context),
