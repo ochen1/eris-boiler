@@ -4,7 +4,8 @@ const { GuildCommand } = require('../../lib')
 const prefix = require('./prefix')
 const mod = require('./mod')
 const admin = require('./admin')
-const admin = require('./dj')
+const dj = require('./dj')
+const keeproleswhenlevel = require("./keepRolesWhenLevel");
 module.exports = new GuildCommand({
   name: 'settings',
   description: 'Change some settings for your server :)',
@@ -14,6 +15,7 @@ module.exports = new GuildCommand({
       mod,
       dj,
       admin,
+      keeproleswhenlevel,
     ]
   },
   run: async function (bot, context) {
