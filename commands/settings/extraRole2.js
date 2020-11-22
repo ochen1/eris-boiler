@@ -11,7 +11,7 @@ module.exports = new SettingCommand({
   displayName: 'Second Extra Permissions Role',
   getValue: async (bot, { channel }) => {
     const dbGuild = await bot.SQLHandler.getGuild(channel.guild.id);
-    const roleId = dbGuild.djRole
+    const roleId = dbGuild.extraRole2
 
     if (!roleId) {
       return 'None'
@@ -31,11 +31,11 @@ module.exports = new SettingCommand({
     }
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
-    if (role.id === dbGuild.djRole) {
-      return 'DJ Permissions is already set to that role!'
+    if (role.id === dbGuild.extraRole2) {
+      return 'Second Extra Permissions Role is already set to that role!'
     }
 
-    await bot.SQLHandler.updateGuild(msg.guildID,{ djRole: role.id });
-    return 'DJ Permissions set!'
+    await bot.SQLHandler.updateGuild(msg.guildID,{ extraRole2: role.id });
+    return 'Second Extra Permissions Role set!'
   }
 })

@@ -32,10 +32,10 @@ module.exports = new SettingCommand({
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
     if (role.id === dbGuild.djRole) {
-      return 'DJ Permissions is already set to that role!'
+      return 'DJ Permissions Role is already set to that role!'
     }
 
     await bot.SQLHandler.updateGuild(msg.guildID,{ djRole: role.id });
-    return 'DJ Permissions set!'
+    return 'DJ Permissions Role set!'
   }
 })
