@@ -4,7 +4,7 @@ const { vip: permission } = require('../../permissions')
 
 const prefix = require('./prefix')
 const mod = require('./mod')
-
+const admin = require('./admin')
 module.exports = new GuildCommand({
   name: 'settings',
   description: 'Change some settings for your server :)',
@@ -14,7 +14,7 @@ module.exports = new GuildCommand({
       prefix,
       mod,
       // dj,
-      // owner,
+      admin,
     ]
   },
   run: async function (bot, context) {
