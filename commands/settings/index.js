@@ -13,8 +13,8 @@ module.exports = new GuildCommand({
     subCommands: [
       prefix,
       mod,
-      dj,
-      owner,
+      // dj,
+      // owner,
     ]
   },
   run: async function (bot, context) {
