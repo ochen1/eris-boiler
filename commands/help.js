@@ -14,13 +14,13 @@ module.exports = new Command({
 
     const { commands, longName } = await filterCommands(bot, context)
 
-    const content = commands.reduce(
-      (ax, { name, description, aliases }) => ax + `\n${name}` + (
-        aliases.length > 0 ? '/' + aliases.join('/') : ''
-      ) + ':' + ' '.repeat(longName - name.length) + description,
-      'Available commands:```'
-    ) + '\n```\nTo get more information try: `help command`'
-    const content = "Check https://dazai.app for the current list of commands! "
+    // const content = commands.reduce(
+    //   (ax, { name, description, aliases }) => ax + `\n${name}` + (
+    //     aliases.length > 0 ? '/' + aliases.join('/') : ''
+    //   ) + ':' + ' '.repeat(longName - name.length) + description,
+    //   'Available commands:```'
+    // ) + '\n```\nTo get more information try: `help command`'
+    const content = "Check https://dazai.app for the current list of commands! \nTo get more information try: `help command`"
     return {
       dm: true,
       content
