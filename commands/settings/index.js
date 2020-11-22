@@ -5,6 +5,9 @@ const prefix = require('./prefix')
 const mod = require('./mod')
 const admin = require('./admin')
 const dj = require('./dj')
+const extraRole = require("./extraRole")
+const extraRole2 = require("./extraRole2")
+
 const keeproleswhenlevel = require("./keepRolesWhenLevel");
 module.exports = new GuildCommand({
   name: 'settings',
@@ -15,6 +18,8 @@ module.exports = new GuildCommand({
       mod,
       dj,
       admin,
+      extraRole,
+      extraRole2,
       keeproleswhenlevel,
     ]
   },
