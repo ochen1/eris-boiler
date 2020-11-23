@@ -16,20 +16,20 @@ module.exports = new SettingCommand({
   },
   run: async (bot, { msg, params }) => {
    
-
+    if (!checkForPerm(msg.member,"administrator")) return "You are Lacking Administrator Perms!";
     if (params[0].toLowerCase() === "none"){
       return "Moderator permissions have been reset to the default!";
     }
     let arrs = params.join(",").split(",").filter(x=>x);
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
-    if (arrs.sort() === dbGuild.everyonePerms.split(",").sort()) {
+    if (dbGuild.modRolePerms && arrs.sort() === dbGuild.modRolePerms.split(",").sort()) {
       return 'Moderator Permissions is already set to that!'
     }
     let permsList = bot.permissionsHandler.allPerms;
     let unknowns = arrs.filter(x=>!permsList.includes(x))
     if (unknowns.length) return "Sorry! I dont understand the permission node(s) `"+unknowns.join()+"`";
-    await bot.SQLHandler.updateGuild(msg.guildID,{ everyonePerms: arrs.join(",") });
+    await bot.SQLHandler.updateGuild(msg.guildID,{ modRolePerms: arrs.join(",") });
     return 'Moderator Permissions set, Perms allowed: ' + arrs.join(" , ");
   }
 })

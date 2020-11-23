@@ -1,3 +1,4 @@
+const { Member } = require('eris');
 const { SettingCommand } = require('../../lib')
 // const { owner: permission } = require('../../permissions')
 
@@ -15,7 +16,7 @@ module.exports = new SettingCommand({
     return "Permissions: \n"+ perms.join("\n");
   },
   run: async (bot, { msg, params }) => {
-   
+    if (!checkForPerm(msg.member,"administrator")) return "You are Lacking Administrator Perms!";
 
     if (params[0].toLowerCase() === "none"){
       return "Base permissions have been reset to the default!";
@@ -23,7 +24,8 @@ module.exports = new SettingCommand({
     let arrs = params.join(",").split(",").filter(x=>x);
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
-    if (arrs.sort() === dbGuild.everyonePerms.split(",").sort()) {
+    
+    if (dbGuild.everyonePerms && arrs.sort() === (dbGuild.everyonePerms).split(",").sort()) {
       return 'Base Permissions is already set to that!'
     }
     let permsList = bot.permissionsHandler.allPerms;
