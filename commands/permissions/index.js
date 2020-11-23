@@ -3,7 +3,7 @@ const { GuildCommand } = require('../../lib')
 
 const prefix = require('./prefix')
 const mod = require('./mod')
-// const admin = require('./admin')
+const everyone = require('./everyone')
 const dj = require('./dj')
 const extraRole = require("./extraRole")
 const extraRole2 = require("./extraRole2")
