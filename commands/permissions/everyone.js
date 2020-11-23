@@ -20,7 +20,7 @@ module.exports = new SettingCommand({
     if (params.length == 0){
       return "Base permissions have been reset to the default!";
     }
-    let arrs = params.join(",").split(",").filter(x=>x)
+    let arrs = params.join(",").split(",").filter(x=>x);
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
     if (arrs.sort() === dbGuild.everyonePerms.split(",").sort()) {
