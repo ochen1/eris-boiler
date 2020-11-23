@@ -6,7 +6,7 @@ module.exports = new SettingCommand({
   description: 'Set the Second Extra Role Permissions for the server',
   options: {
     parameters: [ 'List of permissions that the role has or "none" to clear' ],
-    permission
+    // permission
   },
   displayName: 'Second Extra Role Permissions',
   getValue: async (bot, { channel }) => {

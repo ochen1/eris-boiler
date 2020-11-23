@@ -6,7 +6,7 @@ module.exports = new SettingCommand({
   description: 'Set the DJ Permissions for the server',
   options: {
     parameters: [ 'List of permissions that the role has or "none" to clear' ],
-    permission
+    // permission
   },
   displayName: 'DJ Permissions',
   getValue: async (bot, { channel }) => {

@@ -6,7 +6,7 @@ module.exports = new SettingCommand({
   description: 'Set the base Permissions for the server',
   options: {
     parameters: [ 'List of permissions that the role has or "none" to clear' ],
-    permission
+    
   },
   displayName: 'Base Permissions',
   getValue: async (bot, { channel }) => {
