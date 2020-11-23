@@ -10,7 +10,7 @@ module.exports = new SettingCommand({
   },
   displayName: 'Second Extra Role Permissions',
   getValue: async (bot, { channel }) => {
-    const perms = await bot.permissionsHandler.getPermissions(channel.guild.id,"everyone")
+    const perms = await bot.permissionsHandler.getPermissions(channel.guild.id,"extraRole2")
     // const roleId = dbGuild.adminRole
     return "Permissions: "+ perms.join("\n");
   },
