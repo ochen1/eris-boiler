@@ -1,18 +1,18 @@
 const { SettingCommand } = require('../../lib')
-const { owner: permission } = require('../../permissions')
+// const { owner: permission } = require('../../permissions')
 
 module.exports = new SettingCommand({
   name: 'everyone',
   description: 'Set the base Permissions for the server',
   options: {
-    parameters: [ 'List of permissions that everyone has or "none" to clear' ],
+    parameters: [ 'List of permissions that the role has or "none" to clear' ],
     permission
   },
-  displayName: 'Base Permissions Role',
+  displayName: 'Base Permissions',
   getValue: async (bot, { channel }) => {
     const perms = await bot.permissionsHandler.getPermissions(channel.guild.id,"everyone")
     // const roleId = dbGuild.adminRole
-    return "Permissions: "+ perms.join(" , ");
+    return "Permissions: "+ perms.join("\n");
   },
   run: async (bot, { msg, params }) => {
    

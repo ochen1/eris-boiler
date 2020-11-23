@@ -1,41 +1,35 @@
 const { SettingCommand } = require('../../lib')
-const { owner: permission } = require('../../permissions')
+// const { owner: permission } = require('../../permissions')
 
 module.exports = new SettingCommand({
   name: 'extrarole2',
-  description: 'Set the Second Extra Permissions Role for the server',
+  description: 'Set the Second Extra Role Permissions for the server',
   options: {
-    parameters: [ 'Second Extra Permissions Role name/id/mention' ],
+    parameters: [ 'List of permissions that the role has or "none" to clear' ],
     permission
   },
-  displayName: 'Second Extra Permissions Role',
+  displayName: 'Second Extra Role Permissions',
   getValue: async (bot, { channel }) => {
-    const dbGuild = await bot.SQLHandler.getGuild(channel.guild.id);
-    const roleId = dbGuild.extraRole2
-
-    if (!roleId) {
-      return 'None'
-    }
-
-    return `<@&${roleId}>`
+    const perms = await bot.permissionsHandler.getPermissions(channel.guild.id,"everyone")
+    // const roleId = dbGuild.adminRole
+    return "Permissions: "+ perms.join("\n");
   },
   run: async (bot, { msg, params }) => {
-    const [ roleId ] = params
-    const fullParam = params.join(' ')
+   
 
-    const guild = msg.channel.guild
-    const role = guild.roles.get(roleId) || guild.roles.find((r) => r.name === fullParam || (fullParam.includes("<@&") && r.id === (fullParam.split("<@&")[1].split(">")[0])));
-
-    if (!role) {
-      return `Could not find role "${fullParam}"`
+    if (params[0].toLowerCase() === "none"){
+      return "Second Extra Role permissions have been reset to the default!";
     }
+    let arrs = params.join(",").split(",").filter(x=>x);
 
     const dbGuild = await bot.SQLHandler.getGuild(msg.guildID);
-    if (role.id === dbGuild.extraRole2) {
-      return 'Second Extra Permissions Role is already set to that role!'
+    if (arrs.sort() === dbGuild.everyonePerms.split(",").sort()) {
+      return 'Second Extra Role Permissions is already set to that!'
     }
-
-    await bot.SQLHandler.updateGuild(msg.guildID,{ extraRole2: role.id });
-    return 'Second Extra Permissions Role set!'
+    let permsList = bot.permissionsHandler.allPerms;
+    let unknowns = arrs.filter(x=>!permsList.includes(x))
+    if (unknowns.length) return "Sorry! I dont understand the permission node(s) `"+unknowns.join()+"`";
+    await bot.SQLHandler.updateGuild(msg.guildID,{ everyonePerms: arrs.join(",") });
+    return 'Second Extra Role Permissions set, Perms allowed: ' + arrs.join(" , ");
   }
 })
