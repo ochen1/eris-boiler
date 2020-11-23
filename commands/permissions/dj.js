@@ -12,7 +12,7 @@ module.exports = new SettingCommand({
   getValue: async (bot, { channel }) => {
     const perms = await bot.permissionsHandler.getPermissions(channel.guild.id,"djRole")
     // const roleId = dbGuild.adminRole
-    return "Permissions: "+ perms.join("\n");
+    return "Permissions: \n"+ perms.join("\n");
   },
   run: async (bot, { msg, params }) => {
    

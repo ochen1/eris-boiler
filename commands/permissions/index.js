@@ -28,7 +28,8 @@ module.exports = new GuildCommand({
   run: async function (bot, context) {
     return {
       embed: {
-        description: 'Permissions :tools:',
+        title: 'Permissions :tools:',
+        description: 'Permissions are Inherited in the following order:```Base -> DJ -> ExtraRole -> ModRole -> ExtraRole2 -> Admin (Will have all perms)``` Example: a user with `ModRole` will also gain the permissions from `ExtraRole,DJ,Base`',
         thumbnail: { url: bot.user.avatarURL },
         timestamp: require('dateformat')(Date.now(), 'isoDateTime'),
         color: 0x3498db,
