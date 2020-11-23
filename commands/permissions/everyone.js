@@ -5,7 +5,7 @@ module.exports = new SettingCommand({
   name: 'everyone',
   description: 'Set the base Permissions for the server',
   options: {
-    parameters: [ 'List of permissions that everyone has' ],
+    parameters: [ 'List of permissions that everyone has or "none" to clear' ],
     permission
   },
   displayName: 'Base Permissions Role',
@@ -17,7 +17,7 @@ module.exports = new SettingCommand({
   run: async (bot, { msg, params }) => {
    
 
-    if (params.length == 0){
+    if (params[0].toLowerCase() === "none"){
       return "Base permissions have been reset to the default!";
     }
     let arrs = params.join(",").split(",").filter(x=>x);
