@@ -1,5 +1,5 @@
 module.exports = {
-  isIndex: true,
+  isIndex: false,
   settings: require('./settings'),
   status: require('./status'),
   help: require('./help'),
