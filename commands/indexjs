@@ -1,0 +1,8 @@
+module.exports = {
+  isIndex: false,
+  settings: require('./settings'),
+  status: require('./status'),
+  help: require('./help'),
+
+  process: require('./process')
+}
