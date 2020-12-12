@@ -65,7 +65,7 @@ docs
 .idea
 .atom
 .vscode
-
+.DS_store
 # project
 config.json
 knexfile.js
