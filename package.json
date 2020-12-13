@@ -64,6 +64,7 @@
   },
   "homepage": "https://alex-taxiera.github.io/eris-boiler/",
   "dependencies": {
+    "axios": "^0.21.0",
     "chalk": "^2.4.2",
     "dateformat": "^3.0.3",
     "eris": "github:alex-taxiera/eris#1607863f8767716780902dc92009fc68b44dc651"
