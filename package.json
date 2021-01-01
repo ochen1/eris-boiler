@@ -66,14 +66,14 @@
   "dependencies": {
     "axios": "^0.21.0",
     "chalk": "^2.4.2",
-    "dateformat": "^3.0.3",
-    "eris": "github:alex-taxiera/eris#1607863f8767716780902dc92009fc68b44dc651"
+    "dateformat": "^3.0.3"
   },
   "peerDependencies": {
     "knex": "^0.21.5",
     "mysql": "^2.18.0",
     "pg": "^7.17.1",
-    "sqlite": "^3.0.3"
+    "sqlite": "^3.0.3",
+    "eris": "^0.13.0"
   },
   "devDependencies": {
     "ava": "2.4.0",
