@@ -1,18 +1,18 @@
 {
-  "name": "@eris-boiler/common",
+  "name": "discord-permission",
   "version": "1.0.0",
-  "description": "> TODO: description",
-  "author": "Alex Taxiera <alex.taxiera@gmail.com>",
+  "description": "Discord permission command middleware for eris boiler",
+  "author": "Alex Taxiera <alex.taxiera@onesky.com>",
   "homepage": "https://github.com/alex-taxiera/eris-boiler#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
   "directories": {
-    "lib": "dist",
+    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "dist/src"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -28,9 +28,11 @@
     "url": "https://github.com/alex-taxiera/eris-boiler/issues"
   },
   "peerDependencies": {
-    "eris": "^0.14.0"
+    "@eris-boiler/common": "^1.0.0",
+    "eris-boiler": "^4.0.0"
   },
   "devDependencies": {
-    "eris": "^0.14.0"
+    "@eris-boiler/common": "^1.0.0",
+    "eris-boiler": "^4.0.0"
   }
 }
